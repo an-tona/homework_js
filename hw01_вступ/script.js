@@ -8,7 +8,10 @@ function afterTaxAnnualIncome2023() {
     millitaryTax = 0.015,
     workingDaysin2023 = 260;
 
-   alert('У 2023 ви заробили ' + ((wage * hoursPerDay * workingDaysin2023).toFixed(2))+ 'грн., з яких податки склали ' + (((wage * incomeTax) + (wage * millitaryTax)) * hoursPerDay * workingDaysin2023).toFixed(2) +'грн. Остаточна зарплатня з вирахуванням податків склала: ' + ((wage - (wage * incomeTax) - (wage * millitaryTax)) * hoursPerDay * workingDaysin2023).toFixed(2) + 'грн.');
+   alert('У 2023 ви заробили ' + ((wage * hoursPerDay * workingDaysin2023).toFixed(2))+ 
+        'грн., з яких податки склали ' + (((wage * incomeTax) + (wage * millitaryTax)) * hoursPerDay * workingDaysin2023).toFixed(2) + 
+        'грн. Остаточна зарплатня з вирахуванням податків склала: ' + 
+        ((wage - (wage * incomeTax) - (wage * millitaryTax)) * hoursPerDay * workingDaysin2023).toFixed(2) + 'грн.');
 }
 
 afterTaxAnnualIncome2023();
@@ -29,11 +32,11 @@ function checkCredentials(event) {
           failure = document.querySelector('.failure');
 
     if (username === credentials.login && password === credentials.password) {
-        success.style.display = 'flex'
-        failure.style.display = 'none'
+        success.style.display = 'flex';
+        failure.style.display = 'none';
     } else {
-        failure.style.display = 'flex'
-        success.style.display = 'none'
+        failure.style.display = 'flex';
+        success.style.display = 'none';
     }
 }
 
