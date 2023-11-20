@@ -13,9 +13,9 @@ b = ((c) = ((b)/(2)));
 // Number: age
 
 function yearOfBirth() {
+    const userAge = prompt('Скільки вам років?');
 
-const userAge = prompt('Скільки вам років?');
-alert(2023 - userAge);
+    alert(new Date().getFullYear() - userAge); 
 }
 
 yearOfBirth();
@@ -82,4 +82,3 @@ function flatLocation() {
 }
 
 flatLocation();
-
