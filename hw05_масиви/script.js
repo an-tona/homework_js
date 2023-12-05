@@ -127,7 +127,7 @@ function copy() {
 function deepCopy() {
     const arr = multiplyTable();
     const arrCopy = [[...arr[0]], [...arr[1]], [...arr[2]], [...arr[3]], [...arr[4]]];
-    //якщо найпростіший спосіб це той, в якому треба найменше думати, то це хіба він
+    //найпростіший спосіб
 
     const arrCopyLoop = []; //те саме через цикл
     for (let i = 0; i < arr.length; i++) {
@@ -314,7 +314,7 @@ function mapCalitalize() {
     userInput = userInputArr.map(word => capitalize(word)).join(' ');
     //цікаво, чи це норм практика перезаписувати змінні, чи все ж краще створити нову змінну userInputCapitalized
 
-    // console.log(userInput);
+    console.log(userInput);
 }
 // mapCalitalize();
 
@@ -367,9 +367,10 @@ function reduceHTML() {
 
 function forBracketsHellCheck() {
     const userInput = prompt('Введіть рядок з будь-якими парними дужками в ньому');
-    userInputArr = userInput.split('');
+    const userInputArr = userInput.split('');
 
     const stack = [];
+    // const bracketsArr = ['(', ')', '[', ']', '{', '}'];  //для другого способу
 
     for (const bracket of userInputArr) {
         stack.unshift(bracket);
@@ -381,11 +382,16 @@ function forBracketsHellCheck() {
             stack.shift();
             stack.shift();
         }
+    // if (bracketsArr.indexOf(stack[1]) % 2 === 0 && bracketsArr.indexOf(stack[0]) % 2 !== 0 &&
+    //     (bracketsArr.indexOf(stack[1]) + 1) === bracketsArr.indexOf(stack[0])) {
+    //         stack.shift();
+    //         stack.shift();
+    //     }  // код гірше читається, але працює краще, якщо в перелік дужок захочемо додати нові символи (напр. < та >)
     }
 
     if (stack.length === 0) {
-        alert('Помилок немає')
+        alert('Помилок немає');
     } else {
-        alert('Помилка')
+        alert('Помилка');
     }
 }
