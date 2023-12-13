@@ -276,10 +276,10 @@ function forTableLetters() {
 function forMultTable() {
     const arr = multiplyTable();
 
-    let   str = "<table>";
+    let   str = '<table style="border-collapse:collapse" border="1px solid black"><tr>';
     for (const multiplier of arr){ 
         
-        str += `<tr/>`;
+        str += '<tr>';
 
         if (arr.indexOf(multiplier) % 2 === 0) {
             for (const num of multiplier){ 
@@ -289,6 +289,9 @@ function forMultTable() {
             for (const num of multiplier){           
                 str += `<td style='border:1px solid black'>${num}</td>`;
             }
+
+        str += '</tr>';
+        
         }
     }
     str+= "</table>";
