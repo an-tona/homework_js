@@ -34,7 +34,6 @@ function capitalize(string) {
     let result = string.toLowerCase();
    
     return result[0].toUpperCase() + result.slice(1);
-
 }
 
 
@@ -89,7 +88,6 @@ function checkCredentials(login, password) {
     } else {
         return false;
     }
-   
 }
 
 
@@ -214,16 +212,16 @@ function arrOfObjSort(arr, key, direction) {
 
 //Table
 
-function table(arr, key, direction) {
+function table(arr, key, direction = true) {
     const buffer = [];
     const sortedArr = [];
-     for (const obj of arr) {
+
+    for (const obj of arr) {
         buffer.unshift(obj[key]);
     }
-    if(direction || direction === undefined) {
+
     buffer.sort();
-    } else {
-         buffer.sort();
+    if(direction === false) {
          buffer.reverse();  
     }
     
