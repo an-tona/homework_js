@@ -253,13 +253,11 @@ function table(arr, key, direction = true) {
     for (const obj of sortedArr) {
         str += '<tr>';
         for (const value of uniqueKeys) {
-            if ( uniqueKeys.indexOf(obj[value])) {
                 if (obj[value] === undefined) {
                     str += `<td></td>`;  
                 } else {
             str += `<td>${obj[value]}</td>`;
-                    }
-            }
+                }
         }
         str += '</tr>';
     }
