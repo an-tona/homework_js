@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type='number' id="firstNumber" />
+<input type='number' id="secondNumber" />
+<div id="divisionResult">
+    Результат поділу націло двох чисел
+</div>
+<br/>
+<br/>
+<input type='number' id="wage" />
+<input type='number' id="hoursPerDay" />
+<div id="grossIncome">
+    Валовий прибуток
+</div>
+<div id="totalTax">
+    Загальна кількість податків
+</div>
+<div id="netIncomeAfterTax">
+    Остаточна зарплатня з вирахуванням податків
+</div>
+
+<script>
+    //Divide
+    
+    const calcResult = () => {
+        console.log(firstNumber.value, secondNumber.value, divisionResult.innerHTML);
+        divisionResult.innerHTML = Math.floor(firstNumber.value/secondNumber.value);
+    }
+    
+    firstNumber.oninput = secondNumber.oninput = calcResult;
+
+    //Calc Func
+
+    const afterTaxAnnualIncome2023 = () => {
+      const incomeTax = 0.18,
+      militaryTax = 0.015,
+      workingDaysin2023 = 260;
+  
+    grossIncome.innerHTML = (wage.value * hoursPerDay.value * workingDaysin2023).toFixed(2);
+    totalTax.innerHTML = (((wage.value * incomeTax) + (wage.value * militaryTax)) * hoursPerDay.value * workingDaysin2023).toFixed(2);
+    netIncomeAfterTax.innerHTML = ((wage.value - wage.value * incomeTax - wage.value * militaryTax) * hoursPerDay.value * workingDaysin2023).toFixed(2);
+    }
+    wage.oninput = hoursPerDay.oninput = afterTaxAnnualIncome2023;
+</script>
+</body>
+</html>
