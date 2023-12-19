@@ -133,7 +133,7 @@ function filterLexics(userInput, banWords) {
 
 //Currency table
 
-function forMultTable() {
+function currencyTable() {
     fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
     .then(data => {
         const currencyName = Object.keys(data.rates)
