@@ -136,12 +136,10 @@ function filterLexics(userInput, banWords) {
 function forMultTable() {
     fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
     .then(data => {
-        const currencies = data.rates
-        const currencyName = Object.keys(currencies)
-        const currencyValue = Object.entries(currencies)
+        const currencyName = Object.keys(data.rates)
+        const currencyValue = Object.entries(data.rates)
 
         let str = '<table style="border-collapse:collapse" border="1px solid black"><tr><th></th>';
-
 
             for(let currency of currencyName){
                 str+= `<th>${currency}</th>`;
