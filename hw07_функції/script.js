@@ -137,28 +137,26 @@ function forMultTable() {
     fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
     .then(data => {
         const currencies = data.rates
-        const nameOfCurrency = Object.keys(currencies)
+        const currencyName = Object.keys(currencies)
         const currencyValue = Object.entries(currencies)
 
         let str = '<table style="border-collapse:collapse" border="1px solid black"><tr><th></th>';
 
 
-            for(let currency of nameOfCurrency){
+            for(let currency of currencyName){
                 str+= `<th>${currency}</th>`;
             }
         str += '</tr>';
-            for(let currencyArray of currencyValue){
-                let [currency1, value1] = currencyArray
-                str+= `<tr><td>${currency1}</td>`
-                    for(let[currency2, value2] of currencyValue){
-                        str+= `<td>${(value1 / value2).toFixed(4)}</td>`
+            for(let [currency1, value1] of currencyValue){
+                str+= `<tr><td>${currency1}</td>`;
+                    for(let[, value2] of currencyValue){
+                        str+= `<td>${(value1 / value2).toFixed(4)}</td>`;
                     }
             }
 
         str+= "</tr></table>";
         document.write(str);
-
-        })
+    })
 }
 
 
@@ -175,7 +173,7 @@ for (let arr of arrContainer) {
            str += `<label>${arr[0]}: <input type="number" value=${arr[1]} /></label></br>`;
         } else if (typeof(arr[1]) === 'boolean') {
          str += arr[1] ?  `<label>${arr[0]}: <input type="checkbox" checked /></label></br>`: `<label>${arr[0]}: <input type="checkbox" /></label></br>`;      
-}
+    }
 }
      str += '</form>';
     document.write(str);
