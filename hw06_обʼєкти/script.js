@@ -227,7 +227,7 @@ function currencyTable() {
             for(let [currency1, value1] of currencyValue){
                 str+= `<tr><td>${currency1}</td>`;
                     for(let[, value2] of currencyValue){
-                        str+= `<td>${(value1 / value2).toFixed(4)}</td>`;
+                        str+= `<td>${(value1 / value2).toFixed(2)}</td>`;
                     }
             }
 
