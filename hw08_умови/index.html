@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <select id='from'></select>
+
+        <select id='to'></select>
+
+        <div id='rate'></div>
+
+        <input type='number' id='amount'/>
+
+        <div id='result'></div>
+    </section>
+    
+    <section>
+        <select id='countries'></select>
+
+        <select id='cities'></select>
+    </section>
+
+    <script>
+    //closure calc 2
+
+    fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
+    .then(data => {
+
+        for (const currency in data.rates) {
+           const optionFrom = document.createElement('option');
+           optionFrom.value = currency;
+           optionFrom.innerText = currency;
+           from.append(optionFrom);
+
+           const optionTo = document.createElement('option');
+           optionTo.value = currency;
+           optionTo.innerText = currency;
+           to.append(optionTo);
+        }
+
+        from.onchange = updateRate;
+        to.onchange = updateRate;
+        amount.oninput = updateRate;
+
+        function updateRate() {
+            rate.innerText = (data.rates[from.value]/data.rates[to.value]).toFixed(4);
+            result.innerText = (amount.value * (data.rates[from.value]/data.rates[to.value])).toFixed(2);
+        }
+
+        updateRate();
+    })
+   
+
+    //countries and cities
+
+    fetch('https://raw.githubusercontent.com/russ666/all-countries-and-cities-json/master/countries.min.json').then(res => res.json())
+    .then(data => {
+            
+            for (const counrty in data) {
+                const optionCountries = document.createElement('option');
+                optionCountries.value = counrty;
+                optionCountries.innerText = counrty;
+                countries.append(optionCountries);
+            }
+
+        function updateCities() {
+            cities.innerText = '';
+
+            for (const city of data[countries.value]) {
+                const optionCities = document.createElement('option');
+                optionCities.value = city;
+                optionCities.innerText = city;
+                cities.append(optionCities);
+            }
+        }
+        countries.onchange = updateCities;
+        updateCities();
+    })
+        
+    </script>
+</body>
+</html>
