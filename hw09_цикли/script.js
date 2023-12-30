@@ -292,11 +292,11 @@ function createMultiplyTable() {
                 const cell = document.createElement('td');
                 cell.style.border = '1px solid gainsboro';
                 cell.innerText = arr[i][j];
-                cell.classList.add(`column${i}`, `row${j}`);
+                cell.classList.add(`row${i + 1}`, `column${j + 1}`);
 
                 cell.onmouseover = () => {
-                    const column = document.querySelectorAll(`.column${i}`),
-                          row = document.querySelectorAll(`.row${j}`);
+                    const column = document.querySelectorAll(`.row${i + 1}`),
+                          row = document.querySelectorAll(`.column${j + 1}`);
 
                     column.forEach(element => {
                         element.style.backgroundColor = 'lightgrey'
@@ -310,8 +310,8 @@ function createMultiplyTable() {
                 }
 
                 cell.onmouseout = () => {
-                    const column = document.querySelectorAll(`.column${i}`),
-                          row = document.querySelectorAll(`.row${j}`);
+                    const column = document.querySelectorAll(`.row${i + 1}`),
+                          row = document.querySelectorAll(`.column${j + 1}`);
 
                     column.forEach(element => {
                         element.style.backgroundColor = 'white'
@@ -346,7 +346,7 @@ function createMultiplyTable() {
                     for (const td of row.children) {
                         td.style.backgroundColor = 'lightgrey';
                     }
-                    for(const tr of table.children) {
+                    for (const tr of table.children) {
                         tr.children[j].style.backgroundColor = 'lightgrey';
                     }
                     cell.style.backgroundColor = 'grey'
@@ -355,7 +355,7 @@ function createMultiplyTable() {
                     for (td of row.children) {
                         td.style.backgroundColor = 'white';
                     }
-                    for(const tr of table.children) {
+                    for (const tr of table.children) {
                         tr.children[j].style.backgroundColor = 'white';
                     }
                 }
