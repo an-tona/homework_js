@@ -308,10 +308,10 @@ function createMultiplyTable() {
 
                     cell.style.backgroundColor = 'grey'
                 }
-                
+
                 cell.onmouseout = () => {
                     const column = document.querySelectorAll(`.column${i}`),
-                    row = document.querySelectorAll(`.row${j}`);
+                          row = document.querySelectorAll(`.row${j}`);
 
                     column.forEach(element => {
                         element.style.backgroundColor = 'white'
@@ -324,6 +324,42 @@ function createMultiplyTable() {
                     cell.style.backgroundColor = 'white'
                 }
                 row.append(cell); 
+        }
+        table.append(row);
+    }
+    document.body.append(table);
+}
+//DOM: Highlight cross (НОРМ РІШЕННЯ БЕЗ КЛАСІВ)
+{
+    const arr = createMultiplyTable();
+    const table = document.createElement('table');
+
+    for (let i = 0; i < arr.length; i++) {
+        const row = document.createElement('tr');
+
+            for (let j = 0; j < arr[i].length; j++) {
+                const cell = document.createElement('td');
+                cell.style.border = '1px solid gainsboro';
+                cell.innerText = arr[i][j];
+
+                cell.onmouseover = () => {
+                    for (const td of row.children) {
+                        td.style.backgroundColor = 'lightgrey';
+                    }
+                    for(const tr of table.children) {
+                        tr.children[j].style.backgroundColor = 'lightgrey';
+                    }
+                    cell.style.backgroundColor = 'grey'
+                }
+                cell.onmouseout = () => {
+                    for (td of row.children) {
+                        td.style.backgroundColor = 'white';
+                    }
+                    for(const tr of table.children) {
+                        tr.children[j].style.backgroundColor = 'white';
+                    }
+                }
+                row.append(cell);
         }
         table.append(row);
     }
