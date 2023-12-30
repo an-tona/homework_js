@@ -365,3 +365,12 @@ function createMultiplyTable() {
     }
     document.body.append(table);
 }
+
+
+//завдання з зірочкою
+
+const HelloWorld = (str) => {
+    console.log(str);
+}
+
+HelloWorld("console.log");
