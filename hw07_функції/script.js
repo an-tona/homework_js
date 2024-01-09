@@ -68,7 +68,7 @@ newLine(userInput);
 
 //Promt OR
 
-const orOperator = (age = 20) => age;
+const orOperator = (age = +prompt('Введіть ваш вік') || 20) => age;
 
 
 //Login And Password
