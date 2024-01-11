@@ -180,28 +180,20 @@ for (let arr of arrContainer) {
 
 //Array of objects sort
 
-function arrOfObjSort(arr, key, direction) {
-    const buffer = [];
-    const sortedArr = [];
-    for (const obj of arr) {
-        buffer.unshift(obj[key]);
-    }
-    if(direction || direction === undefined) {
-    buffer.sort();
-    } else {
-         buffer.sort();
-         buffer.reverse();  
-    }
-    for (let i = 0; i < buffer.length; i++) {
-       
-        for (const obj of arr) {
-            if (obj[key] === buffer[i]) {
-                sortedArr.push(obj)
-               
-            }
+function arrOfObjSort(arr, key, direction = true) {
+    const swap = direction ? -1 : 1;
+
+    arr.sort((a, b) => {
+
+        if (a[key] > b[key]) {
+            return -swap;
+        } else if (a[key] < b[key]) {
+            return swap;
+        } else {
+            return 0;
         }
-    }
-    console.log(sortedArr);
+    });
+    return arr;
 }
 
 
