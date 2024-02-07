@@ -18,7 +18,7 @@ async function jsonPost(url, data) {
 
         return await response.json();
     } catch (error) {
-        throw new Error('jsonPost failed');
+        console.error(error.message);
     }
 }
 
@@ -47,6 +47,8 @@ function createChat(parent) {
     
     sendBtn.onclick = async () => {
         await sendAndCheck(nicknameInput.value, messageTextInput.value);
+        nicknameInput.value = '';
+        messageTextInput.value = '';
     }
 }
 createChat(document.body);
@@ -82,7 +84,7 @@ async function sendAndCheck(nick, message) {
     await getMessages();
 }
 
-(async function checkLoop() {
+;(async function checkLoop() {
     while (true) {
         await getMessages();
         await delay(2000);
@@ -145,10 +147,9 @@ swapiLinks("https://swapi.dev/api/people/20/")
 //domEventPromise
 
 function domEventPromise(element, eventName){
-    let eventFunc;
 
     function executor(resolve) {
-        eventFunc = (e) => {
+        const eventFunc = (e) => {
             element.removeEventListener(eventName, eventFunc);
             resolve(e);
         }
@@ -157,6 +158,5 @@ function domEventPromise(element, eventName){
     }
     return new Promise(executor)
 }
-
 
 domEventPromise(document.body, 'click').then( e => console.log('event click happens', e));
