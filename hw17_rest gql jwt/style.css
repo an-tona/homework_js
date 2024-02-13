@@ -1,0 +1,25 @@
+.traffic-light {
+    display: inline-block;
+    background: black;
+}
+
+.traffic-light div {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: background-color 0.5s;
+}
+
+.red.active {
+    background-color: red;
+}
+
+.yellow.active {
+    background-color: yellow;
+}
+
+.green.active {
+    background-color: green;
+}
