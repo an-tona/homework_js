@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Кіоск</title>
+        <meta charset='utf8' />
+    <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header>
+            <div class="login-container">
+                <div id="login">
+                    <a id="login-header" href="#/login/">Sign In</a> / <a id="register-header" href="#/register/">Register</a>
+                </div>
+    
+                <div id="loginGreetUser"></div>
+                <div id="logout">
+                    <a id="logout-btn" href="#/">Log out</a>
+                </div>
+            </div>
+
+            <div class="cart-container">
+                <img id="cart-icon" src="./images/cart.png">
+                <div id="cartCount">0</div>
+            </div>
+        </header>
+
+        <div id='mainContainer'>
+            <aside id='aside'>
+                Loading Categories...
+            </aside>
+            <main id='main'>
+                <h2>Кіоск "У Антона" <br> www.адаптивної верстки.net</h2>           
+            </main>
+            <aside id='checkout'>
+                <div class="checkout-content">
+                    <h3>Summary</h3>
+                    <div class="summary-cart-list">
+                        <p>Amount</p><span id="items-amount">0</span>
+                        <p><b>Total</b></p><span id="total">0</span>
+                        <button class="checkout-btn">Checkout</button>
+                        <a href="#/history" id="showOrderHistory">Show order history</a>
+                        <a href="#/cart" id="hideOrderHistory">Hide order history</a>
+                    </div>
+                </div>
+            </aside>
+            <div class="modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="#">
+                            <div data-close class="modal-close">&times;</div>
+                            <div class="modal-title">
+                                <span id="register-title" class="modal-title--active">Register</span> / <span id="login-title">Sign in</span>
+                            </div>
+                            <input required placeholder="Login" name="text" type="text" class="modal-input login-input">
+                            <input required placeholder="Password" name="Password" type="password" class="modal-input password-input">
+                            <div id="confirm-password-container" style="display: none;">
+                                <input required placeholder="Confirm Password" name="ConfirmPassword" type="password" class="modal-input confirm-password-input">
+                            </div>
+                            <div id="login-error">Login or password is incorrect</div>
+                            <div id="register-error">Passwords do not match</div>
+                            <button class="btn sign-btn">Sign In</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="thanks-modal">
+                <div class="thanks-modal-dialog">
+                    <div class="thanks-modal-content">
+                        <h2>Thanks for your order!</h2>
+                        <img src="./images/shrek.gif">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./script.js"></script>
+    </body>
+</html>
